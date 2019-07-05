@@ -1,21 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Form></Form>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Form from './components/Form.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Form
   }
 }
 </script>
-
+<style scoped>
+#app {
+    background: #ee6f57;
+}
+</style>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

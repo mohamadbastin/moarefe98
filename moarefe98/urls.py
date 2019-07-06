@@ -21,6 +21,6 @@ from crewsignup.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/', include('crewsignup')),
+    path('signup/', include('crewsignup.urls')),
 
 ]

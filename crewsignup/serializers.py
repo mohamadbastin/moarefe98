@@ -15,7 +15,7 @@ class ParentSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    parent = ParentSerializer()
+    # parent = ParentSerializer()
 
     class Meta:
         model = Category
@@ -23,7 +23,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
+    # category = CategorySerializer()
 
     class Meta:
         model = Question

@@ -47,19 +47,37 @@ class AnswerListView(RetrieveAPIView):
     #     )
     #     temp.save()
 
-        # return Response({"status": "ok"})
+    # return Response({"status": "ok"})
 
 
 class AnswerPostView(CreateAPIView):
     serializer_class = AnswerSerializer
-    allowed_methods = ['POST',]
+    allowed_methods = ['POST', ]
 
     def post(self, request, *args, **kwargs):
         temp = Answer(
             user=User.objects.get(pk=request.data.get('user', None)),
-            question= Question(pk=request.data.get('question', None)),
+            question=Question(pk=request.data.get('question', None)),
             text=request.data.get('text', None),
             boolean=request.data.get('boolean', None),
         )
         temp.save()
         return Response({'response': 'ok'})
+
+
+class ParentView(ListAPIView):
+    serializer_class = ParentSerializer
+    allowed_methods = ['GET']
+    queryset = Parent.objects.all()
+
+
+class CategoryView(ListAPIView):
+    serializer_class = CategorySerializer
+    allowed_methods = ['GET']
+    queryset = Category.objects.all()
+
+
+class QuestionView(ListAPIView):
+    serializer_class = QuestionSerializer
+    allowed_methods = ['GET']
+    queryset = Question.objects.all()

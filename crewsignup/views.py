@@ -55,7 +55,6 @@ class AnswerPostView(CreateAPIView):
     allowed_methods = ['POST', ]
 
     def post(self, request, *args, **kwargs):
-
         # temp = Answer(
         #     user=request.data.get('user', None),
         #     question=int(request.data.get('question', None)),
@@ -63,7 +62,6 @@ class AnswerPostView(CreateAPIView):
         #     boolean=request.data.get('boolean', None),
         # )
         # temp.save()
-
 
         serialized = AnswerSerializer(data=request.data, many=True)
         if serialized.is_valid():

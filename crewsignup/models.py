@@ -9,6 +9,7 @@ class User(models.Model):
     email = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=15)
     student_number = models.IntegerField(null=True, blank=True, default=0)
+    address = models.CharField(max_length=1000)
 
     def __str__(self):
         return str(self.first_name) + ' ' + str(self.last_name) + ' '

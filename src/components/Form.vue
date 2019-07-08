@@ -1,98 +1,134 @@
-<template id="aida">
+<template>
 <div class="float-center">
   <div id="aida" class="container">
     <div class="row">
       <div class="col-12">
-        <form>
+        <form style="width:350px">
           <div class="text-center">
-            <h2 style="padding: 20px">Moarefe Registration</h2>
+            <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">Moarefe Registration</h2>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+          <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <div class="form-group" style="display:table-cell">
+              <label for="firstnameInput" style="color:white">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstnameInput"
+                v-model="user.first_name"
+                placeholder="Enter Your First Name"
+              />
+            <!-- <small
+              id="emailHelp"
+              class="form-text text-muted"
+            >We'll never share your email with anyone else.</small> -->
+            </div>
+              <div class="mr-2 col-md-12">
+            </div>
+
+            <div class="form-group" style="display:table-cell">
+              <label for="secondnameInput" style="color:white">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="user.last_name"
+                id="secondnameInput"
+                placeholder="Enter Your Second Name"
+              />
+          </div>
+          </div>
+          <div class="mt-4 col-md-12">
+          </div>
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <label for="emailInput" style="color:white">Email</label>
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
               v-model="user.email"
-              placeholder="Enter email"
+              id="emailInput"
+              placeholder="Enter Your Email"
             />
-            <small
-              id="emailHelp"
-              class="form-text text-muted"
-            >We'll never share your email with anyone else.</small>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">First Name</label>
-            <input
-              type="password"
+
+          <div class="mt-4 col-md-12">
+          </div>
+
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <label for="phoneNumberInput" style="color:white">Phone Number</label>
+            <input 
+              type="tel"
               class="form-control"
-              v-model="user.first_name"
-              id="exampleInputPassword1"
-              placeholder="Password"
+              v-model="user.phone_number"
+              id="phoneNumberInput"
+              placeholder="Enter Your Number"
             />
           </div>
-          <div class="text-left">check here bitch</div>
-          <div></div>
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <div class="mt-4 col-md-12">
           </div>
-          <div></div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <label for="stdNumInput" style="color:white">Student Number</label>
+            <input 
+              type="text"
+              class="form-control"
+              v-model="user.student_number"
+              id="stdNumInput"
+              placeholder="Enter Your Student Number"
+            />
+          </div>
+          <div class="mt-4 col-md-12">
+          </div>
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <label for="addressInput" style="color:white">Address</label>
+            <input 
+              type="text"
+              class="form-control"
+              v-model="user.address"
+              id="addressInput"
+              placeholder="Enter Your Address"
+            />
           </div>
 
-          <div class="form-check" v-bind:key="parent.pk" v-for="parent in parents">
+          <div class="form-group" v-bind:key="parent.pk" v-for="parent in parents" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px; color:white">
             <input
-              class="form-check-input"
+              class="form-group-input"
               :id="'parent' + parent.pk"
               @change="parentCheckboxChanged"
               type="checkbox"
               :value= "parent.pk"
             />
-            <label class="form-check-label" :for="'parent' + parent.pk">{{ parent.name }}</label>
+            <label class="form-group-label" :for="'parent' + parent.pk">{{ parent.name }}</label>
           </div>
 
-          <div class="form-check">
-            <h2>categories</h2>
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
+            <h2>Categories</h2>
           </div>          
 
-          <div class="form-check" v-bind:key="parent.pk" v-for="parent in chosenParents">
+          <div class="form-group" v-bind:key="parent.pk" v-for="parent in chosenParents " style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
             <div
-              class="form-check"
+              class="form-group"
               v-bind:key="category.pk"
               v-for="category in categories"
               v-if="category.parent.pk == Number(parent)"
               
             >
               <input
-                class="form-check-input"
+                class="form-group-input"
                 :id="'category' + category.pk"
                 @change="categoryCheckboxChanged"
                 type="checkbox"
                 :value="category.pk"
               />
-              <label class="form-check-label" :for="'category' + category.pk"> {{ category.parent.name }} {{ category.name }}</label>
+              <label class="form-group-label" :for="'category' + category.pk"> {{ category.parent.name }} {{ category.name }}</label>
             </div>
           </div>
 
-          <div class="form-check">
+          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
             <h2>Questions</h2>
           </div>
 
-          <div class="form-check" v-bind:key="category.pk" v-for="category in chosenCategories">
-            <div class="form-check" v-bind:key="question" v-for="question in questions">
-              <div class="form-check" v-if="question.category.pk == category">
-                <div class="form-check" v-if="question.is_bool == false">
+          <div class="form-group" v-bind:key="category.pk" v-for="category in chosenCategories">
+            <div class="form-group" v-bind:key="question" v-for="question in questions">
+              <div class="form-group" v-if="question.category.pk == category">
+                <div class="form-group" v-if="question.is_bool == false">
                     <p> {{ question.category.name }} {{ question.text }} </p>
                     <input
                       v-model="info[question.pk]"
@@ -101,7 +137,7 @@
                       placeholder="answer"
                       > 
                 </div>
-                <div class="form-check" v-else>
+                <div class="form-group  " v-else>
                   <p> {{ question.category.name }} {{ question.text }} </p>
                   <label><input
                       v-model="info[question.pk]"
@@ -132,7 +168,7 @@
 
 
 
-          <p @click="doRegister" class="btn btn-primary">Submit</p>
+          <p @click="doRegister" class="btn btn-primary" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">Submit</p>
         </form>
       </div>
     </div>
@@ -148,10 +184,11 @@ export default {
     return {
       user: {
         first_name: "",
-        last_name: "aefawe",
+        last_name: "",
         email: "",
-        phone_number: "14312",
-        student_number: null
+        phone_number: "",
+        student_number: null,
+        address: ""
       },
       userpk: null,
       parents: [],
@@ -330,9 +367,15 @@ export default {
 
 
 <style scoped>
+
 #aida {
-  background: #e3e3e3;
-  
+  background: #212121;
+  background-color: transparent;
+   border: 4px solid	#4B0082;
+  border-radius: 18px;
+  vertical-align: middle;
+  margin-top: 10%;
+  width: 400px;
 }
 </style>
 

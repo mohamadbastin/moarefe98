@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app" >
     <Form></Form>
   </div>
 </template>
@@ -15,17 +15,19 @@ export default {
 }
 </script>
 <style scoped>
-#app {
-    background: #ee6f57;
-}
-</style>
-<style>
-#app {
+.app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+  display: flex;
+  height: 100vh;
+  background: #454545;
+  background-image: url('Blur-2.png')
 }
+</style>
+<style>
 </style>

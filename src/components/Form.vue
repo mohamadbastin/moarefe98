@@ -168,43 +168,77 @@ export default {
     };
   },
   methods: {
-    doRegister() {
+    async doRegister() {
       const vinst = this;
-      axios
-        .post("http://localhost:8000/signup/user/", this.user)
-        .then(response => {
-          console.log(response);
-          this.userpk = response.data["pk"];
-          console.log(this.userpk);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-        console.log("info:");
-        console.log(this.info);
+      
+      // console.log(this.user);
+
+      async function createuser(a) { 
+        // console.log('1');
+        let response = await axios.post("http://localhost:8000/signup/user/", a.user)
+        
+        // console.log('2');
+        if (response.status == 200) {
+          // console.log('success: ',response);
+          var upk = response.data["pk"];
+          // console.log(a.userpk);
+        } else {
+          console.log('error: ',response);
+        }
+
+        return upk;
+      
+        }
+
+        this.userpk = await createuser(this)
+        // .then((res)=>{
+        //     // console.log(res);
+        //     this.userpk = res;
+            // console.log(this.userpk);
+            // console.log(this.userpk);
+        // });
+        // console.log("info:");
+        // console.log(this.info);
+        // console.log(this.userpk);
+        
         var answerData = {};
+
+        var answerlist=[];
+
+
         for (var item in this.info) {
             if (this.questionsMap[item].is_bool == true) {
-              console.log('tushe');
+              // console.log('tushe');
               answerData = {
                 "user": this.userpk,
                 "question": item,
                 "text": "",
                 "boolean": this.info[item]
               }
-              console.log(answerData);
+              answerlist.push(answerData);
+              // console.log(answerData);
             } else {
-              console.log('biruneshe');
+              // console.log('biruneshe');
               answerData = {
                 "user": this.userpk,
                 "question": item,
                 "text": this.info[item],
                 "boolean": null,
               }
-              console.log(answerData);
+              answerlist.push(answerData);
+              // console.log(answerData);
             }
         }
-        this.info = []; 
+        console.log(answerlist);
+        var answerres= await axios.post('http://localhost:8000/signup/answer/', answerlist);
+        console.log(answerres);
+
+        answerlist = [];
+        this.info = [];
+        this.chosenQuestions=[];
+        this.chosenCategories = [];
+        this.chosenParents=[];
+        
     },
     parentCheckboxChanged($event) {
       // console.log(this.parentsMap[$event.target.value])
@@ -225,7 +259,7 @@ export default {
           for (var cat in temp) {
             // console.log('cC list:', this.chosenCategories);
             // console.log('temp list :', temp);
-            // console.log('temp[cat]: ',temp[cat] );
+            // console.log('temp[cat]: ',temp[cat]);
             // console.log('temp[cat] obj: ',this.categoriesMap[temp[cat]]);
             // console.log('cC[cat]: ', this.chosenCategories[cat]);
             // console.log('cC[cat] obj: ', this.categoriesMap[this.chosenCategories[cat]]);

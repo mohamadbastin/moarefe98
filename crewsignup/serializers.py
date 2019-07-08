@@ -9,21 +9,21 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ParentSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Parent
         fields = ['pk', 'name']
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    # parent = ParentSerializer()
-
+    parent = ParentSerializer()
     class Meta:
         model = Category
         fields = ['pk', 'parent', 'name']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    # category = CategorySerializer()
+    category = CategorySerializer()
 
     class Meta:
         model = Question
@@ -33,6 +33,9 @@ class QuestionSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     # user = UserSerializer()
     # question = QuestionSerializer()
+    def __init__(self, *args, **kwargs):
+        many = kwargs.pop('many', True)
+        super(AnswerSerializer, self).__init__(many=many, *args, **kwargs)
 
     class Meta:
         model = Answer

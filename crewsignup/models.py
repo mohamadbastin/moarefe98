@@ -41,8 +41,8 @@ class Question(models.Model):
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    text = models.CharField(max_length=300, null=True, blank=True)
-    boolean = models.BooleanField(null=True, blank=True)
+    text = models.CharField(max_length=300, null=True, blank=True, default='')
+    boolean = models.BooleanField(null=True, blank=True, default=None)
 
     def __str__(self):
         return str(self.user) + str(self.question)

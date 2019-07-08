@@ -27,7 +27,7 @@ class UserView(CreateAPIView):
             temp.student_number = 0
         temp.save()
 
-        return Response({"status": "ok"})
+        return Response({"pk": temp.pk})
 
 
 class AnswerListView(RetrieveAPIView):
@@ -55,13 +55,20 @@ class AnswerPostView(CreateAPIView):
     allowed_methods = ['POST', ]
 
     def post(self, request, *args, **kwargs):
-        temp = Answer(
-            user=User.objects.get(pk=request.data.get('user', None)),
-            question=Question(pk=request.data.get('question', None)),
-            text=request.data.get('text', None),
-            boolean=request.data.get('boolean', None),
-        )
-        temp.save()
+
+        # temp = Answer(
+        #     user=request.data.get('user', None),
+        #     question=int(request.data.get('question', None)),
+        #     text=request.data.get('text', None),
+        #     boolean=request.data.get('boolean', None),
+        # )
+        # temp.save()
+
+
+        serialized = AnswerSerializer(data=request.data, many=True)
+        if serialized.is_valid():
+            serialized.save()
+
         return Response({'response': 'ok'})
 
 

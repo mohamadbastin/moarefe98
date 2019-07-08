@@ -1,4 +1,5 @@
 <template id="aida">
+<div class="float-center">
   <div id="aida" class="container">
     <div class="row">
       <div class="col-12">
@@ -56,21 +57,21 @@
               :id="'parent' + parent.pk"
               @change="parentCheckboxChanged"
               type="checkbox"
-              :value="parent.pk"
+              :value= "parent.pk"
             />
             <label class="form-check-label" :for="'parent' + parent.pk">{{ parent.name }}</label>
           </div>
 
           <div class="form-check">
             <h2>categories</h2>
-          </div>
+          </div>          
 
           <div class="form-check" v-bind:key="parent.pk" v-for="parent in chosenParents">
             <div
               class="form-check"
               v-bind:key="category.pk"
               v-for="category in categories"
-              v-if="category.parent == Number(parent)"
+              v-if="category.parent.pk == Number(parent)"
               
             >
               <input
@@ -80,7 +81,7 @@
                 type="checkbox"
                 :value="category.pk"
               />
-              <label class="form-check-label" :for="'category' + category.pk">{{ category.name }}</label>
+              <label class="form-check-label" :for="'category' + category.pk"> {{ category.parent.name }} {{ category.name }}</label>
             </div>
           </div>
 
@@ -90,32 +91,36 @@
 
           <div class="form-check" v-bind:key="category.pk" v-for="category in chosenCategories">
             <div class="form-check" v-bind:key="question" v-for="question in questions">
-              <div class="form-check" v-if="question.category == category">
+              <div class="form-check" v-if="question.category.pk == category">
                 <div class="form-check" v-if="question.is_bool == false">
-                    <p> {{ question.text }} </p>
+                    <p> {{ question.category.name }} {{ question.text }} </p>
                     <input
-                    
+                      v-model="info[question.pk]"
                       class="form-control"
                       type="text"
                       placeholder="answer"
                       > 
                 </div>
                 <div class="form-check" v-else>
-                  <p> {{ question.text }} </p>
+                  <p> {{ question.category.name }} {{ question.text }} </p>
                   <label><input
-                      name="boz"
+                      v-model="info[question.pk]"
+                      :name="question.pk"
                       class="radio"
                       type="radio"
                       label="yes"
                       placeholder="answer"
+                      value= true
                       padding="20px"
                       > yes </label>
                       <div></div>
                       <label><input
-                      name="boz"
+                      v-model="info[question.pk]"
+                      :name="question.pk"
                       class="radio"
                       type="radio"
-                      label="yes"
+                      label="no"
+                      value= false
                       placeholder="answer"
                       padding="20px"
                       > no </label>
@@ -125,10 +130,13 @@
             </div>
           </div>
 
+
+
           <p @click="doRegister" class="btn btn-primary">Submit</p>
         </form>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -145,62 +153,142 @@ export default {
         phone_number: "14312",
         student_number: null
       },
+      userpk: null,
       parents: [],
       chosenParents: [],
       categories: [],
       chosenCategories: [],
       questions: [],
       chosenQuestions: [],
-      dataObject: {}
+      dataObject: {},
+      info: {},
+      parentsMap : {},
+      categoriesMap : {},
+      questionsMap: {}
     };
   },
   methods: {
     doRegister() {
-      // const vinst = this;
+      const vinst = this;
       axios
         .post("http://localhost:8000/signup/user/", this.user)
         .then(response => {
           console.log(response);
+          this.userpk = response.data["pk"];
+          console.log(this.userpk);
         })
         .catch(err => {
           console.log(err);
         });
+        console.log("info:");
+        console.log(this.info);
+        var answerData = {};
+        for (var item in this.info) {
+            if (this.questionsMap[item].is_bool == true) {
+              console.log('tushe');
+              answerData = {
+                "user": this.userpk,
+                "question": item,
+                "text": "",
+                "boolean": this.info[item]
+              }
+              console.log(answerData);
+            } else {
+              console.log('biruneshe');
+              answerData = {
+                "user": this.userpk,
+                "question": item,
+                "text": this.info[item],
+                "boolean": null,
+              }
+              console.log(answerData);
+            }
+        }
+        this.info = []; 
     },
     parentCheckboxChanged($event) {
+      // console.log(this.parentsMap[$event.target.value])
       if ($event.target.checked) {
+        // console.log($event.target.value)
         this.chosenParents.push($event.target.value);
-        console.log(this.chosenParents);
+        
+        // console.log(this.chosenParents);
       } else {
         let index = this.chosenParents.indexOf($event.target.value);
         if (index > -1) {
           this.chosenParents.splice(index, 1);
         }
+          let temp = this.chosenCategories.slice(0);
+          // console.log('set');
+          // console.log('temp:',temp);
+          // console.log('cC:', this.chosenCategories);
+          for (var cat in temp) {
+            // console.log('cC list:', this.chosenCategories);
+            // console.log('temp list :', temp);
+            // console.log('temp[cat]: ',temp[cat] );
+            // console.log('temp[cat] obj: ',this.categoriesMap[temp[cat]]);
+            // console.log('cC[cat]: ', this.chosenCategories[cat]);
+            // console.log('cC[cat] obj: ', this.categoriesMap[this.chosenCategories[cat]]);
+            // console.log(this.categoriesMap[temp[cat]].parent.pk == $event.target.value);
+            //   console.log(this.categoriesMap[this.chosenCategories[cat]].parent.pk == $event.target.value);
+              // console.log('catlist:');
+              // console.log('cC: ',this.categoriesMap[this.chosenCategories[temp[cat]]]);
+              // console.log('cat:');
+              // console.log(this.chosenCategories[cat]);
+              // console.log('value:');
+              // console.log($event.target.value);
+              
+            if (this.categoriesMap[temp[cat]].parent.pk == $event.target.value) {
+              // console.log('sag in if');
+              // console.log('value: ',$event.target.value);
+              var indexx = this.chosenCategories.indexOf(temp[cat]);
+              // console.log('index: ',indexx);
+              if (indexx > -1) {
+                this.chosenCategories.splice(indexx, 1);
+          //       // console.log(this.chosenCategories);
+              }
+          }
       }
-    },
-    categoryCheckboxChanged($event) {
+      temp = [];
+    }
+    
+    
+
+  },
+  categoryCheckboxChanged($event) {
       if ($event.target.checked) {
         this.chosenCategories.push($event.target.value);
-        console.log(this.chosenCategories);
+        // console.log(this.chosenCategories);
       } else {
         let index = this.chosenCategories.indexOf($event.target.value);
         if (index > -1) {
           this.chosenCategories.splice(index, 1);
         }
+
       }
     }
-  },
+    },
   mounted() {
     axios.get("http://localhost:8000/signup/parent").then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.parents = response.data;
+      for(let item of this.parents){
+        this.parentsMap[item.pk] = item;
+      }
+      
     }),
       axios.get("http://localhost:8000/signup/category").then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.categories = response.data;
+        for(let item of this.categories){
+        this.categoriesMap[item.pk] = item;
+      }
       }),
       axios.get("http://localhost:8000/signup/question").then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.questions = response.data;
+        for(let item of this.questions){
+        this.questionsMap[item.pk] = item;}
       });
   }
 };
@@ -210,6 +298,7 @@ export default {
 <style scoped>
 #aida {
   background: #e3e3e3;
+  
 }
 </style>
 

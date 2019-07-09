@@ -7,6 +7,7 @@
           <div class="text-center">
             <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">Moarefe Registration</h2>
           </div>
+          
           <!-- <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px"> -->
             <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
               <label for="nameInput" style="color:white">Full Name</label>

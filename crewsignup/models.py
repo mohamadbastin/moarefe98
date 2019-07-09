@@ -4,15 +4,14 @@ from django.db import models
 # Create your models here.
 
 class User(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     email = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=15)
     student_number = models.IntegerField(null=True, blank=True, default=0)
-    address = models.CharField(max_length=1000)
+    address = models.CharField(max_length=1000, null=True, blank=True, default=" ")
 
     def __str__(self):
-        return str(self.first_name) + ' ' + str(self.last_name) + ' '
+        return str(self.name)
 
 
 class Parent(models.Model):

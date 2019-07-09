@@ -5,8 +5,8 @@ from .models import *
 # Register your models here.
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['last_name', 'first_name', 'phone_number', ]
-    list_display_links = ['last_name']
+    list_display = ['name', 'phone_number', ]
+    list_display_links = ['name']
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -22,9 +22,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ['user', 'question', 'text', 'boolean']
+    list_display = ['user', 'get_category', 'question', 'text', 'boolean']
     list_display_links = ['user', ]
     list_filter = ['user', 'question', 'question__category', 'question__category__parent']
+
+    def get_category(self, instance):
+        return instance.question.category.name
 
 
 admin.site.register(User, UserAdmin)

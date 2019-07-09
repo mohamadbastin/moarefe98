@@ -14,7 +14,8 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style >
+
 .app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,9 +26,11 @@ export default {
   vertical-align: middle;
   display: flex;
   height: 100vh;
-  background: #454545;
-  background-image: url('Blur-2.png')
+  overflow: scroll;
+  /* background: #454545; */
+  background-image: url('Blur-2.png');
+  background-attachment: fixed; 
+  background-repeat: repeat-x; 
 }
 </style>
-<style>
-</style>
+

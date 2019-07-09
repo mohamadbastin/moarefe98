@@ -1,41 +1,29 @@
 <template>
-<div class="float-center">
+<div id="aida-container">
   <div id="aida" class="container">
     <div class="row">
       <div class="col-12">
-        <form style="width:350px">
+        <form style="width:90%; margin:auto;">
           <div class="text-center">
             <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">Moarefe Registration</h2>
           </div>
-          <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-            <div class="form-group" style="display:table-cell">
-              <label for="firstnameInput" style="color:white">First Name</label>
+          <!-- <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px"> -->
+            <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+              <label for="nameInput" style="color:white">Full Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="firstnameInput"
-                v-model="user.first_name"
-                placeholder="Enter Your First Name"
+                id="nameInput"
+                v-model="user.name"
+                placeholder="Name"
               />
             <!-- <small
               id="emailHelp"
               class="form-text text-muted"
             >We'll never share your email with anyone else.</small> -->
+            
             </div>
-              <div class="mr-2 col-md-12">
-            </div>
-
-            <div class="form-group" style="display:table-cell">
-              <label for="secondnameInput" style="color:white">Last Name</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="user.last_name"
-                id="secondnameInput"
-                placeholder="Enter Your Second Name"
-              />
-          </div>
-          </div>
+          <!-- </div> -->
           <div class="mt-4 col-md-12">
           </div>
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
@@ -72,9 +60,12 @@
               v-model="user.student_number"
               id="stdNumInput"
               placeholder="Enter Your Student Number"
-            />
-          </div>
-          <div class="mt-4 col-md-12">
+            /> </div>
+
+            <div class="float-center"><h2>groups:</h2></div>
+          
+          
+          <!-- <div class="mt-4 col-md-12">
           </div>
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
             <label for="addressInput" style="color:white">Address</label>
@@ -85,7 +76,7 @@
               id="addressInput"
               placeholder="Enter Your Address"
             />
-          </div>
+          </div> -->
 
           <div class="form-group" v-bind:key="parent.pk" v-for="parent in parents" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px; color:white">
             <input
@@ -117,7 +108,7 @@
                 type="checkbox"
                 :value="category.pk"
               />
-              <label class="form-group-label" :for="'category' + category.pk"> {{ category.parent.name }} {{ category.name }}</label>
+              <label class="form-group-label" :for="'category' + category.pk"> <span style="color:red">{{ category.parent.name }}</span> {{ category.name }}</label>
             </div>
           </div>
 
@@ -183,8 +174,7 @@ export default {
   data() {
     return {
       user: {
-        first_name: "",
-        last_name: "",
+        name: "",
         email: "",
         phone_number: "",
         student_number: null,
@@ -367,15 +357,23 @@ export default {
 
 
 <style scoped>
-
+#aida-container {
+  /* background-color: red; */
+  width: 100%;
+}
 #aida {
-  background: #212121;
+  /* background-color: #212121; */
   background-color: transparent;
-   border: 4px solid	#4B0082;
+  border: 4px solid	#4B0082;
   border-radius: 18px;
   vertical-align: middle;
-  margin-top: 10%;
-  width: 400px;
+  margin: 30px auto 0 auto;
+  width: 27%;
+  min-width: 320px;
+}
+.form-group, .form-control {
+  width: 90%;
+  margin: auto;
 }
 </style>
 

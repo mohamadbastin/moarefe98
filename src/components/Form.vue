@@ -5,18 +5,19 @@
       <div class="col-12">
         <form style="width:90%; margin:auto;">
           <div class="text-center">
-            <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">Moarefe Registration</h2>
+            <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">ثبت نام کارگروه ها</h2>
           </div>
 
           <!-- <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px"> -->
             <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-              <label for="nameInput" style="color:white">Full Name</label>
+              <label for="nameInput" style="color:white">نام و نام خانوادگی</label>
               <input
                 type="text"
+                required= true
                 class="form-control"
                 id="nameInput"
                 v-model="user.name"
-                placeholder="Name"
+                placeholder="نام و نام خانوادگی"
               />
 
               
@@ -30,13 +31,13 @@
           <div class="mt-4 col-md-12">
           </div>
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-            <label for="emailInput" style="color:white">Email</label>
+            <label for="emailInput" style="color:white">ایمیل</label>
             <input
               type="email"
               class="form-control"
               v-model="user.email"
               id="emailInput"
-              placeholder="Enter Your Email"
+              placeholder="ایمیل"
             />
           </div>
 
@@ -44,28 +45,81 @@
           </div>
 
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-            <label for="phoneNumberInput" style="color:white">Phone Number</label>
+            <label for="phoneNumberInput" style="color:white">شماره تماس</label>
             <input 
-              type="tel"
+              type="text"
+              required = true
               class="form-control"
               v-model="user.phone_number"
               id="phoneNumberInput"
-              placeholder="Enter Your Number"
+              placeholder="شماره تماس"
             />
           </div>
           <div class="mt-4 col-md-12">
           </div>
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-            <label for="stdNumInput" style="color:white">Student Number</label>
+            <label for="stdNumInput" style="color:white">شماره دانشجویی</label>
             <input 
               type="text"
               class="form-control"
               v-model="user.student_number"
               id="stdNumInput"
-              placeholder="Enter Your Student Number"
+              placeholder="شماره دانشجویی"
             /> </div>
 
-            <div class="float-center"><h2>groups:</h2></div>
+            <div class="mt-4 col-md-12" style="color: white;">
+                <p> <span class="form-group" style=" color:white; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">تابستون شیراز هستی؟ </span></p>
+                  <label><input
+                      v-model="user.in_shiraz"
+                      :name="in_shiraz"
+                      class="radio"
+                      type="radio"
+                      label="yes"
+                      placeholder="answer"
+                      value= true
+                      padding="20px"
+                      > بله </label>
+                      <div></div>
+                      <label><input
+                      v-model="user.in_shiraz"
+                      :name="in_shiraz"
+                      class="radio"
+                      type="radio"
+                      label="no"
+                      value= false
+                      placeholder="answer"
+                      padding="20px"
+                      > خیر </label>
+            </div>
+
+
+            <div class="mt-4 col-md-12" style="color: white;">
+                <p> <span class="form-group" style=" color:white; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">ترم تابستونه داری؟ </span></p>
+                  <label><input
+                      v-model="user.term_tabestun"
+                      :name="term_tabestun"
+                      class="radio"
+                      type="radio"
+                      label="yes"
+                      placeholder="answer"
+                      value= true
+                      padding="20px"
+                      > بله </label>
+                      <div></div>
+                      <label><input
+                      v-model="user.term_tabestun"
+                      :name="term_tabestun"
+                      class="radio"
+                      type="radio"
+                      label="no"
+                      value= false
+                      placeholder="answer"
+                      padding="20px"
+                      > خیر </label>
+            </div>
+
+
+            <div class="float-center" style="color: blue"><h2> گروه ها</h2></div>
           
           
           <!-- <div class="mt-4 col-md-12">
@@ -82,6 +136,7 @@
           </div> -->
 
           <div class="form-group" v-bind:key="parent.pk" v-for="parent in parents" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px; color:white">
+            <label class="form-group-label" :for="'parent' + parent.pk">  {{   parent.name }}</label>
             <input
               class="form-group-input"
               :id="'parent' + parent.pk"
@@ -89,11 +144,11 @@
               type="checkbox"
               :value= "parent.pk"
             />
-            <label class="form-group-label" :for="'parent' + parent.pk">{{ parent.name }}</label>
+            
           </div>
 
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
-            <h2>Categories</h2>
+            <h2 style="color: blue">زیر گروه ها</h2>
           </div>          
 
           <div class="form-group" v-bind:key="parent.pk" v-for="parent in chosenParents " style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
@@ -104,6 +159,8 @@
               v-if="category.parent.pk == Number(parent)"
               
             >
+               <label class="form-group-label" :for="'category' + category.pk"> <span style="color:red">{{ category.parent.name }}</span> {{ category.name }}</label>
+
               <input
                 class="form-group-input"
                 :id="'category' + category.pk"
@@ -111,19 +168,18 @@
                 type="checkbox"
                 :value="category.pk"
               />
-              <label class="form-group-label" :for="'category' + category.pk"> <span style="color:red">{{ category.parent.name }}</span> {{ category.name }}</label>
             </div>
           </div>
 
           <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
-            <h2>Questions</h2>
+            <h2 style="color: blue">سوالات</h2>
           </div>
 
           <div class="form-group" v-bind:key="category.pk" v-for="category in chosenCategories">
             <div class="form-group" v-bind:key="question" v-for="question in questions">
               <div class="form-group" v-if="question.category.pk == category">
                 <div class="form-group" v-if="question.is_bool == false">
-                    <p> {{ question.category.name }} {{ question.text }} </p>
+                    <p> <span style="color:red">{{ question.category.name }}  : </span> {{ question.text }} </p>
                     <input
                       v-model="info[question.pk]"
                       class="form-control"
@@ -132,7 +188,7 @@
                       > 
                 </div>
                 <div class="form-group  " v-else>
-                  <p> {{ question.category.name }} {{ question.text }} </p>
+                  <p> <span style="color:red">{{ question.category.name }} : </span>  {{ question.text }} </p>
                   <label><input
                       v-model="info[question.pk]"
                       :name="question.pk"
@@ -142,7 +198,7 @@
                       placeholder="answer"
                       value= true
                       padding="20px"
-                      > yes </label>
+                      > بله </label>
                       <div></div>
                       <label><input
                       v-model="info[question.pk]"
@@ -153,7 +209,7 @@
                       value= false
                       placeholder="answer"
                       padding="20px"
-                      > no </label>
+                      > خیر </label>
 
                 </div>
               </div>
@@ -162,7 +218,7 @@
 
 
 
-          <p @click="doRegister" class="btn btn-primary" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">Submit</p>
+          <p @click="doRegister" class="btn btn-primary" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">ثبت</p>
         </form>
       </div>
     </div>
@@ -177,11 +233,13 @@ export default {
   data() {
     return {
       user: {
-        name: "",
+        name: null,
         email: "",
-        phone_number: "",
+        phone_number: null,
         student_number: null,
-        address: ""
+        address: "",
+        in_shiraz: null,
+        term_tabestun:null
       },
       userpk: null,
       parents: [],

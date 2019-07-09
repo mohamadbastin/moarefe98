@@ -29,8 +29,8 @@ export default {
   overflow: scroll;
   /* background: #454545; */
   background-image: url('Blur-2.png');
-  background-attachment: fixed; 
-  background-repeat: repeat-x; 
+  /* background-attachment: fixed; 
+  background-repeat: repeat-x;  */
 }
 </style>
 

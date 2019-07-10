@@ -313,7 +313,7 @@ export default {
 
       async function createuser(a) { 
         // console.log('1');
-        let response = await axios.post("http://localhost:8000/signup/user/", a.user)
+        let response = await axios.post("http://api.moarefe98.ir/signup/user/", a.user)
         
         // console.log('2');
         if (response.status == 200) {
@@ -368,7 +368,7 @@ export default {
             }
         }
         console.log(answerlist);
-        var answerres= await axios.post('http://localhost:8000/signup/answer/', answerlist);
+        var answerres= await axios.post('http://api.moarefe98.ir/signup/answer/', answerlist);
         console.log(answerres);
 
         answerlist = [];
@@ -441,7 +441,7 @@ export default {
     }
     },
   mounted() {
-    axios.get("http://localhost:8000/signup/parent").then(response => {
+    axios.get("http://api.moarefe98.ir/signup/parent").then(response => {
       // console.log(response.data);
       this.parents = response.data;
       for(let item of this.parents){
@@ -449,14 +449,14 @@ export default {
       }
       
     }),
-      axios.get("http://localhost:8000/signup/category").then(response => {
+      axios.get("http://api.moarefe98.ir/signup/category").then(response => {
         // console.log(response.data);
         this.categories = response.data;
         for(let item of this.categories){
         this.categoriesMap[item.pk] = item;
       }
       }),
-      axios.get("http://localhost:8000/signup/question").then(response => {
+      axios.get("http://api.moarefe98.ir/signup/question").then(response => {
         // console.log(response.data);
         this.questions = response.data;
         for(let item of this.questions){

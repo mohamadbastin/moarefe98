@@ -5,17 +5,18 @@
       <div class="col-12">
         <form style="width:90%; margin:auto;">
           <div class="text-center">
-            <h2 style="padding: 20px;font-family: 'Raleway', sans-serif;color : #884DCB">ثبت نام کارگروه ها</h2>
+            <h2 style="padding: 20px;font-family: 'Lalezar', cursive;text-shadow: 1px 3px 0 #3F00FF;color : #884DCB">ثبت نام کارگروه ها</h2>
           </div>
 
           <!-- <div style="display:table; font-family: 'PT Sans Narrow', sans-serif;font-size:20px"> -->
-            <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+            <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px">
               <label for="nameInput" style="color:white">نام و نام خانوادگی</label>
               <input
                 type="text"
                 required= true
                 class="form-control"
                 id="nameInput"
+                style="direction: rtl"
                 v-model="user.name"
                 placeholder="نام و نام خانوادگی"
               />
@@ -30,13 +31,14 @@
           <!-- </div> -->
           <div class="mt-4 col-md-12">
           </div>
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+          <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px">
             <label for="emailInput" style="color:white">ایمیل</label>
             <input
               type="email"
               class="form-control"
               v-model="user.email"
               id="emailInput"
+               
               placeholder="ایمیل"
             />
           </div>
@@ -44,7 +46,7 @@
           <div class="mt-4 col-md-12">
           </div>
 
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+          <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px">
             <label for="phoneNumberInput" style="color:white">شماره تماس</label>
             <input 
               type="text"
@@ -52,34 +54,41 @@
               class="form-control"
               v-model="user.phone_number"
               id="phoneNumberInput"
+               
               placeholder="شماره تماس"
             />
           </div>
           <div class="mt-4 col-md-12">
           </div>
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
+          <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px">
             <label for="stdNumInput" style="color:white">شماره دانشجویی</label>
             <input 
               type="text"
               class="form-control"
               v-model="user.student_number"
               id="stdNumInput"
+               
               placeholder="شماره دانشجویی"
             /> </div>
 
             <div class="mt-4 col-md-12" style="color: white;">
-                <p> <span class="form-group" style=" color:white; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">تابستون شیراز هستی؟ </span></p>
-                  <label><input
+                <p> <span class="form-group" style=" color:white; font-family: 'Lalezar', cursive;font-size:20px">تابستون شیراز هستی؟ </span></p>
+                <table align="center" cellpadding="5px">
+                  <tr>
+                    <th>
+                      <label><input
                       v-model="user.in_shiraz"
                       :name="in_shiraz"
                       class="radio"
                       type="radio"
                       label="yes"
-                      placeholder="answer"
+                       
+                      placeholder="جواب"
                       value= true
                       padding="20px"
                       > بله </label>
-                      <div></div>
+                    </th>
+                    <th>
                       <label><input
                       v-model="user.in_shiraz"
                       :name="in_shiraz"
@@ -87,25 +96,34 @@
                       type="radio"
                       label="no"
                       value= false
-                      placeholder="answer"
+                       
+                      placeholder="جواب"
                       padding="20px"
                       > خیر </label>
+                    </th>
+                  </tr>
+                </table>
             </div>
 
 
-            <div class="mt-4 col-md-12" style="color: white;">
-                <p> <span class="form-group" style=" color:white; font-family: 'PT Sans Narrow', sans-serif;font-size:20px">ترم تابستونه داری؟ </span></p>
-                  <label><input
+            <div class="mt-4 col-md-12" style="color: white">
+                <p> <span class="form-group" style=" color:white; font-family: 'Lalezar', cursive;font-size:20px">ترم تابستونه داری؟ </span></p>
+                <table align="center"  cellpadding="5px" >
+                  <tr>
+                    <th>
+                      <label ><input
                       v-model="user.term_tabestun"
                       :name="term_tabestun"
                       class="radio"
                       type="radio"
                       label="yes"
-                      placeholder="answer"
+                       
+                      placeholder="جواب"
                       value= true
                       padding="20px"
                       > بله </label>
-                      <div></div>
+                    </th>
+                    <th>
                       <label><input
                       v-model="user.term_tabestun"
                       :name="term_tabestun"
@@ -113,29 +131,29 @@
                       type="radio"
                       label="no"
                       value= false
-                      placeholder="answer"
+                       
+                      placeholder="جواب"
                       padding="20px"
                       > خیر </label>
+                    </th>
+                  </tr>
+
+ 
+                </table>
             </div>
 
 
-            <div class="float-center" style="color: blue"><h2> گروه ها</h2></div>
-          
-          
-          <!-- <div class="mt-4 col-md-12">
+          <div class="mt-4 col-md-12">
           </div>
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px">
-            <label for="addressInput" style="color:white">Address</label>
-            <input 
-              type="text"
-              class="form-control"
-              v-model="user.address"
-              id="addressInput"
-              placeholder="Enter Your Address"
-            />
-          </div> -->
 
-          <div class="form-group" v-bind:key="parent.pk" v-for="parent in parents" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px; color:white">
+
+            <div class="float-center" style="font-family: 'Lalezar', cursive; color: blue"><h2> گروه ها</h2></div>
+          
+
+          <div class="mt-4 col-md-12">
+          </div>
+
+          <div class="form-group" v-bind:key="parent.pk" v-for="parent in parents" style=" font-family: 'Lalezar', cursive;;font-size:20px; color:white">
             <label class="form-group-label" :for="'parent' + parent.pk">  {{   parent.name }}</label>
             <input
               class="form-group-input"
@@ -147,11 +165,22 @@
             
           </div>
 
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
+
+
+          <div class="mt-4 col-md-12">
+          </div>
+
+
+          <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px;color:white">
             <h2 style="color: blue">زیر گروه ها</h2>
           </div>          
 
-          <div class="form-group" v-bind:key="parent.pk" v-for="parent in chosenParents " style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
+
+
+          <div class="mt-4 col-md-12">
+          </div>
+
+          <div class="form-group" v-bind:key="parent.pk" v-for="parent in chosenParents " style=" font-family: 'Lalezar', cursive;font-size:20px;color:white">
             <div
               class="form-group"
               v-bind:key="category.pk"
@@ -171,8 +200,16 @@
             </div>
           </div>
 
-          <div class="form-group" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">
+
+          <div class="mt-4 col-md-12">
+          </div>
+          
+          <div class="form-group" style=" font-family: 'Lalezar', cursive;font-size:20px;color:white">
             <h2 style="color: blue">سوالات</h2>
+          </div>
+
+
+          <div class="mt-4 col-md-12">
           </div>
 
           <div class="form-group" v-bind:key="category.pk" v-for="category in chosenCategories">
@@ -184,33 +221,40 @@
                       v-model="info[question.pk]"
                       class="form-control"
                       type="text"
-                      placeholder="answer"
+                       
+                      placeholder="جواب"
                       > 
                 </div>
-                <div class="form-group  " v-else>
+                <div class="form-group  " v-else style="font-family: 'Lalezar', cursive; display:inline-block">
                   <p> <span style="color:red">{{ question.category.name }} : </span>  {{ question.text }} </p>
-                  <label><input
-                      v-model="info[question.pk]"
-                      :name="question.pk"
-                      class="radio"
-                      type="radio"
-                      label="yes"
-                      placeholder="answer"
-                      value= true
-                      padding="20px"
-                      > بله </label>
-                      <div></div>
-                      <label><input
-                      v-model="info[question.pk]"
-                      :name="question.pk"
-                      class="radio"
-                      type="radio"
-                      label="no"
-                      value= false
-                      placeholder="answer"
-                      padding="20px"
-                      > خیر </label>
-
+                  <table cellpadding="5px">
+                    <tr>
+                      <th>
+                        <label><input
+                        v-model="info[question.pk]"
+                        :name="question.pk"
+                        class="radio"
+                        type="radio"
+                        label="yes"
+                        placeholder="جواب"
+                        value= true
+                        padding="20px"
+                        > بله </label>
+                      </th>
+                      <th>
+                        <label><input
+                        v-model="info[question.pk]"
+                        :name="question.pk"
+                        class="radio"
+                        type="radio"
+                        label="no"
+                        value= false
+                        placeholder="جواب"
+                        padding="20px"
+                        > خیر </label>
+                      </th>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>
@@ -218,7 +262,13 @@
 
 
 
-          <p @click="doRegister" class="btn btn-primary" style=" font-family: 'PT Sans Narrow', sans-serif;font-size:20px;color:white">ثبت</p>
+          <div class="mt-4 col-md-12">
+          </div>
+
+
+
+
+          <p @click="doRegister" class="btn btn-outline-primary"  style=" font-family: 'Lalezar', cursive; font-size:20px;color:white">ثبت</p>
         </form>
       </div>
     </div>
@@ -432,6 +482,8 @@ export default {
   width: 27%;
   min-width: 320px;
 }
+
+
 .form-group, .form-control {
   width: 90%;
   margin: auto;

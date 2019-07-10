@@ -376,6 +376,8 @@ export default {
         this.chosenQuestions=[];
         this.chosenCategories = [];
         this.chosenParents=[];
+        window.location.replace('http://moarefe98.ir');
+
         
     },
     parentCheckboxChanged($event) {

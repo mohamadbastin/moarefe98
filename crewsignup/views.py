@@ -18,10 +18,20 @@ class UserView(CreateAPIView):
     serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
+        def maker(s):
+            if request.data.get(s) == 'true':
+                return True
+            elif request.data.get(s) == 'false':
+                return False
+            else:
+                return None
+
         temp = User(name=request.data.get('name', None),
                     email=request.data.get('email', None),
                     phone_number=request.data.get('phone_number', None),
-                    student_number=request.data.get('student_number', 0))
+                    student_number=request.data.get('student_number', 0),
+                    in_shiraz=maker('in_shiraz'),
+                    term_tabestun=maker('term_tabestun'))
         if request.data.get('student_number') == '' or request.data.get('student_number') == None:
             temp.student_number = 0
         temp.save()

@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone_number', ]
+    list_display = ['name', 'phone_number', 'in_shiraz', 'term_tabestun']
     list_display_links = ['name']
 
 

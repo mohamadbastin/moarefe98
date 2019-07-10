@@ -9,6 +9,8 @@ class User(models.Model):
     phone_number = models.CharField(max_length=15)
     student_number = models.IntegerField(null=True, blank=True, default=0)
     address = models.CharField(max_length=1000, null=True, blank=True, default=" ")
+    in_shiraz = models.BooleanField(null=True, blank=True)
+    term_tabestun = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return str(self.name)

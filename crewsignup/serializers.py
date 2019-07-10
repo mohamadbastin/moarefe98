@@ -5,11 +5,10 @@ from .models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['pk', 'name', 'email', 'phone_number', 'student_number', 'address']
+        fields = ['pk', 'name', 'email', 'phone_number', 'student_number', 'address', 'in_shiraz', 'term_tabestun']
 
 
 class ParentSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Parent
         fields = ['pk', 'name']
@@ -17,6 +16,7 @@ class ParentSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     parent = ParentSerializer()
+
     class Meta:
         model = Category
         fields = ['pk', 'parent', 'name']

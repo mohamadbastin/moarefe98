@@ -11,6 +11,7 @@ class User(models.Model):
     address = models.CharField(max_length=1000, null=True, blank=True, default=" ")
     in_shiraz = models.BooleanField(null=True, blank=True)
     term_tabestun = models.BooleanField(null=True, blank=True)
+    mashin = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return str(self.name)

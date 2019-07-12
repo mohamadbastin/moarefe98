@@ -31,7 +31,8 @@ class UserView(CreateAPIView):
                     phone_number=request.data.get('phone_number', None),
                     student_number=request.data.get('student_number', 0),
                     in_shiraz=maker('in_shiraz'),
-                    term_tabestun=maker('term_tabestun'))
+                    term_tabestun=maker('term_tabestun'),
+                    mashin=maker('mashin'))
         if request.data.get('student_number') == '' or request.data.get('student_number') == None:
             temp.student_number = 0
         temp.save()

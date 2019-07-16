@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ade8797-d83f-48fe-9ca2-2836123960da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crewsignup/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/crewsignup/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crewsignup/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/crewsignup/serializers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +56,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="433" />
+          <entry key="py" value="454" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="433" />
+          <entry key="Python" value="454" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -80,15 +78,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crewsignup/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="48" column="70" lean-forward="true" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
+            <state relative-caret-position="275">
+              <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
               <folding>
-                <marker date="1563281533442" expanded="true" signature="653:754" ph="..." />
-                <marker date="1563281533442" expanded="true" signature="848:853" ph="..." />
-                <marker date="1563281533442" expanded="true" signature="1047:1052" ph="..." />
+                <marker date="1563281755153" expanded="true" signature="653:754" ph="..." />
+                <marker date="1563281755153" expanded="true" signature="848:853" ph="..." />
+                <marker date="1563281755153" expanded="true" signature="1047:1052" ph="..." />
               </folding>
             </state>
           </provider>
@@ -115,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crewsignup/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="77" column="29" lean-forward="true" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+            <state relative-caret-position="395">
+              <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <marker date="1562966822755" expanded="true" signature="481:1431" ph="..." />
@@ -204,8 +202,8 @@
         <option value="$PROJECT_DIR$/crewsignup/admin.py" />
         <option value="$PROJECT_DIR$/moarefe98/settings.py" />
         <option value="$PROJECT_DIR$/crewsignup/views.py" />
-        <option value="$PROJECT_DIR$/crewsignup/models.py" />
         <option value="$PROJECT_DIR$/crewsignup/serializers.py" />
+        <option value="$PROJECT_DIR$/crewsignup/models.py" />
       </list>
     </option>
   </component>
@@ -355,18 +353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crewsignup/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="48" column="70" lean-forward="true" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
-          <folding>
-            <marker date="1563281533442" expanded="true" signature="653:754" ph="..." />
-            <marker date="1563281533442" expanded="true" signature="848:853" ph="..." />
-            <marker date="1563281533442" expanded="true" signature="1047:1052" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crewsignup/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
@@ -384,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crewsignup/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="77" column="29" lean-forward="true" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+        <state relative-caret-position="395">
+          <caret line="82" column="30" lean-forward="true" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <marker date="1562966822755" expanded="true" signature="481:1431" ph="..." />
@@ -394,6 +380,18 @@
             <marker date="1562966822755" expanded="true" signature="1587:1773" ph="..." />
             <marker date="1562966822755" expanded="true" signature="2083:2088" ph="..." />
             <marker date="1562966822755" expanded="true" signature="2696:2701" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crewsignup/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <marker date="1563281755153" expanded="true" signature="653:754" ph="..." />
+            <marker date="1563281755153" expanded="true" signature="848:853" ph="..." />
+            <marker date="1563281755153" expanded="true" signature="1047:1052" ph="..." />
           </folding>
         </state>
       </provider>

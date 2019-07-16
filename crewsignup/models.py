@@ -46,6 +46,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.CharField(max_length=300, null=True, blank=True, default='')
     boolean = models.BooleanField(null=True, blank=True, default=None)
+    no_idea = models.BooleanField(null=True, blank=True, default=None)
 
     def __str__(self):
         return str(self.user) + str(self.question)

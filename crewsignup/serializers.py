@@ -40,4 +40,4 @@ class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ['pk', 'user', 'question', 'text', 'boolean']
+        fields = ['pk', 'user', 'question', 'text', 'boolean', 'no_idea']

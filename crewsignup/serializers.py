@@ -28,7 +28,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ['pk', 'category', 'text', 'is_bool']
+        fields = ['pk', 'category', 'text', 'is_bool', 'no_idea']
 
 
 class AnswerSerializer(serializers.ModelSerializer):
